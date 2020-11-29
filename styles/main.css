@@ -9,6 +9,32 @@ body {
     flex-direction: column;
 }
 
+.primDisp {
+    font-size: 42px;
+    color: white;
+    text-align: right;
+    margin: 9px;
+}
+
+.primDispDiv {
+    width: 310px;
+    height: 50px;
+}
+
+.secDisp {
+    font-size: 24px;
+    color: rgb(199, 199, 199);
+    text-align: right;
+    margin: 9px;
+    padding-right: 1px;
+}
+
+.secDispDiv {
+    width: 310px;
+    height: 20px;
+    padding: 0px;
+}
+
 .calculator {
     width: 350px;
     height: 530px;
@@ -65,7 +91,7 @@ button {
 }
 
 .silverButton {
-    background-color: silver;
+    background-color: rgb(230, 230, 230);
 }
 
 .grayButton {
@@ -76,4 +102,3 @@ button {
 .orangeButton {
     background-color: orange;
 }
-
