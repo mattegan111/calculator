@@ -28,7 +28,22 @@ oprPressed.forEach((item)=>{
 var decPressed = document.querySelectorAll(".dec");
 decPressed.forEach((item)=>{
     item.addEventListener("click",() => {
-        if(primDispVal.textContent.includes(".") == false) {
+        var decCount = 0;
+        var i = primDispVal.textContent.length-1;
+        while(i > 0) {
+            if(primDispVal.textContent[i] == ".") {
+                decCount++;
+            }
+            if( primDispVal.textContent[i] == "÷" ||
+                primDispVal.textContent[i] == "x" ||
+                primDispVal.textContent[i] == "−" ||
+                primDispVal.textContent[i] == "+") {
+                break;
+            }
+            i--;
+        }
+
+        if(decCount < 1) {
             if(primDispVal.textContent == "0") {
                 primDispVal.textContent = "";
             }
@@ -45,7 +60,9 @@ clear.addEventListener("click",()=>{
 })
 
 sign.addEventListener("click",()=>{
-    primDispVal.textContent = parseInt((primDispVal.textContent) * (-1));
+    if(primDispVal.textContent != "") {
+        primDispVal.textContent = parseInt((primDispVal.textContent) * (-1));
+    }
 })
 
 backspace.addEventListener("click",()=>{
@@ -54,10 +71,10 @@ backspace.addEventListener("click",()=>{
 
 equals.addEventListener("click",()=>{
     var userInput = primDispVal.textContent;
-    var listInput = (userInput.split("÷").join(',÷,').split("✕").join(',✕,').split("+").join(',+,').split("−").join(',−,')).split(',');
+    var listInput = (userInput.split("÷").join(',/,').split("x").join(',x,').split("+").join(',+,').split("−").join(',-,')).split(',');
 
     if (listInput[0] == "") {
-        if (listInput[1] == "−") {
+        if (listInput[1] == "-") {
             listInput[2] = parseFloat(listInput[2]) * -1;
             listInput.splice([0], 2);
         }
@@ -68,7 +85,7 @@ equals.addEventListener("click",()=>{
 
     for (var i = 0; i < listInput.length; i++) {
         if (listInput[i] == "" && listInput.length >= i+2) {
-            if (listInput[i+1] == "−") {
+            if (listInput[i+1] == "-") {
                 listInput[i+2] = parseFloat(listInput[i+2]) * -1;
                 listInput.splice([i], 2);
             }
@@ -79,7 +96,7 @@ equals.addEventListener("click",()=>{
     }
     
     for (var i = 0; i < listInput.length; i++) {
-        if (listInput[i] == "÷") {
+        if (listInput[i] == "/") {
             a = parseFloat(listInput[i-1]);
             b = parseFloat(listInput[i+1]);
             listInput[i-1] = (a / b);
@@ -89,7 +106,7 @@ equals.addEventListener("click",()=>{
     }
 
     for (var i = 0; i < listInput.length; i++) {
-        if (listInput[i] == "✕") {
+        if (listInput[i] == "x") {
             a = parseFloat(listInput[i-1]);
             b = parseFloat(listInput[i+1]);
             listInput[i-1] = (a * b);
@@ -109,7 +126,7 @@ equals.addEventListener("click",()=>{
     }
 
     for (var i = 0; i < listInput.length; i++) {
-        if (listInput[i] == "−") {
+        if (listInput[i] == "-") {
             a = parseFloat(listInput[i-1]);
             b = parseFloat(listInput[i+1]);
             listInput[i-1] = (a - b);
