@@ -54,21 +54,25 @@ decPressed.forEach((item)=>{
     });
 })
 
+var clear = document.getElementById("clear");
 clear.addEventListener("click",()=>{
     primDispVal.textContent="";
     secDispVal.textContent="";
 })
 
+var sign = document.getElementById("sign");
 sign.addEventListener("click",()=>{
     if(primDispVal.textContent != "") {
         primDispVal.textContent = parseInt((primDispVal.textContent) * (-1));
     }
 })
 
+var backspace = document.getElementById("backspace");
 backspace.addEventListener("click",()=>{
     primDispVal.textContent = primDispVal.textContent.substring(0, primDispVal.textContent.length - 1);
 })
 
+var equals = document.getElementById("equals");
 equals.addEventListener("click",()=>{
     var userInput = primDispVal.textContent;
     var listInput = (userInput.split("÷").join(',/,').split("x").join(',x,').split("+").join(',+,').split("−").join(',-,')).split(',');
